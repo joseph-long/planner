@@ -1,8 +1,8 @@
 <template>
   <div>
-    <input v-model="value.identifier">
+    <input @input="update" v-model="identifierInput">
     <button @click="lookup">SIMBAD lookup</button>
-    RA=<input v-model.number="value.ra">, Dec=<input v-model.number="value.dec">
+    RA=<input @input="update" v-model.number="raInput">, Dec=<input @input="update" v-model.number="decInput">
   </div>
 </template>
 <script>
@@ -22,7 +22,17 @@ export default {
         let value = {identifier: that.value.identifier, ra: decimalRA, dec: decimalDec};
         that.$emit('input', value);
       })
+    },
+    update: function ($event) {
+      this.$emit('input', {identifier: this.identifierInput, ra: this.raInput, dec: this.decInput});
     }
+  },
+  data: function () {
+    return {
+      raInput: this.value.ra,
+      decInput: this.value.dec,
+      identifierInput: this.value.identifier
+    };
   }
 }
 </script>
