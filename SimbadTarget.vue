@@ -27,6 +27,13 @@ export default {
       this.$emit('input', {identifier: this.identifierInput, ra: this.raInput, dec: this.decInput});
     }
   },
+  watch: {
+    value: function (newValue) {
+        this.identifierInput = newValue.identifier;
+        this.raInput = newValue.ra;
+        this.decInput = newValue.dec;
+    }
+  },
   data: function () {
     return {
       raInput: this.value.ra,

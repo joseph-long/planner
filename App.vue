@@ -6,7 +6,7 @@
     </div>
     <div id="controls">
       <controls
-        v-bind="state"
+        v-bind:state="state"
         @apply-preset="applyPreset"
         @append-companion="appendCompanion"
         @remove-companion="removeCompanion"></controls>
@@ -122,9 +122,7 @@ export default {
           ra: 0,
           dec: 0
         },
-        companions: [
-          {separation: 1, pa: 0}
-        ]
+        companions: []
       }
     }
   }
